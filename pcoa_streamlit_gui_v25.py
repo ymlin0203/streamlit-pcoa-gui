@@ -6,9 +6,8 @@ from scipy.spatial.distance import pdist, squareform
 from skbio.stats.distance import DistanceMatrix, anosim
 import io
 
-st.set_page_config(page_title="PCoA GUI v25", layout="wide")
-st.title("🧬 PCoA GUI v25 (分類修正+ANOSIM)")
-st.caption("🔧 v25.9：ANOSIM 結果修正 + 類別型保留格式 + 分類自訂")
+st.set_page_config(page_title="PCoA GUI", layout="wide")
+st.title("🧬 PCoA GUI 🧬")
 
 uploaded_sample = st.file_uploader("上傳 sample coordinate (.tsv or .csv)", type=["tsv", "csv"])
 uploaded_proportion = st.file_uploader("上傳 proportion explained (.tsv or .csv)", type=["tsv", "csv"])

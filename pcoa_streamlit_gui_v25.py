@@ -36,19 +36,19 @@ if uploaded_sample and uploaded_proportion and uploaded_metadata:
         st.subheader("🧩 分類變因設定")
         color_var = st.selectbox("選擇上色變數", meta_cols)
 
-        mode = st.radio("📌 請選擇該變數型態", ["自動偵測", "類別型", "連續型"], index=0)
+        mode = st.radio("📌 請選擇該變數型態", ["自動偵測", "類別變因型", "連續變因型"], index=0)
 
         df_merged = df_merged[df_merged[color_var].notna() & (df_merged[color_var].str.strip() != "")]
         if df_merged.empty:
             st.error(f"🛑 變數「{color_var}」無有效資料。請確認 metadata 或改選其他變數。")
             st.stop()
 
-        if mode == "類別型" or (mode == "自動偵測" and df_merged[color_var].nunique() <= 10):
+        if mode == "類別變因型" or (mode == "自動偵測" and df_merged[color_var].nunique() <= 10):
             df_merged[color_var] = df_merged[color_var].astype(str)
-            palette = st.selectbox("🎨 選擇色盤 (類別型)", ["Set1", "Set2", "tab10", "Dark2"])
+            palette = st.selectbox("🎨 選擇色盤 (類別變因型)", ["Set1", "Set2", "tab10", "Dark2"])
             plot_kind = "categorical"
         else:
-            palette = st.selectbox("🎨 選擇色盤 (連續型)", ["viridis", "plasma", "cividis"])
+            palette = st.selectbox("🎨 選擇色盤 (連續變因型)", ["viridis", "plasma", "cividis"])
             plot_kind = "continuous"
 
         fig, ax = plt.subplots(figsize=(8, 6))
